@@ -1,0 +1,25 @@
+form.form-horizontal(role='form', name='formulario', ng-submit='formulario.$valid && suspender(motivo)')
+
+	.modal-header
+		h3.modal-title Suspensão de Tutorial
+
+	.modal-body
+		.lead Motivo da Suspensão:
+			span.obrigatorio(tooltip='Campo obrigatório')  *
+		.row
+			.col-sm-12
+				textarea#motivo.form-control(placeholder='Motivo da Suspensão', ng-model='motivo', required)
+
+		br
+
+		small
+			span.obrigatorio * 
+			|  Campos que são obrigatórios.
+
+	.modal-footer
+		button.btn.btn-default.pull-left(type='button', ng-click='fechar()')
+			span.fa.fa-remove
+			|  Fechar
+		button.btn.btn-danger(type='submit')
+			span.fa.fa-thumbs-o-down
+			|  Suspender

@@ -1,0 +1,123 @@
+h1 
+    span.fa.fa-pencil-square-o
+    |  Tutorial
+    small  Criação
+hr
+
+ol.breadcrumb
+    li
+        a(href='/#/') 
+            span.fa.fa-home
+            |  Início
+    li.active
+        span.fa.fa-pencil-square-o
+        |  Criar Tutorial
+
+
+.panel.panel-default
+    .panel-heading Criar seu Tutorial
+    .panel-body
+        .lead
+            span.fa.fa-group 
+            |  Colabore com todo mundo, compartilhe um conhecimento:
+        form.form-horizontal(role='form', name='formulario', ng-submit='formulario.$valid && cadastrar()')
+            .form-group
+                label.col-sm-2.control-label(for='titulo') Título:
+                    span.obrigatorio(tooltip='Campo obrigatório')  *
+                .col-md-6.col-sm-10
+                    input#titulo.form-control(type='text', placeholder='Título', pattern=".{5,50}", title="O título deve conter 5 a 100 caracteres.", ng-model='tutorial.titulo', tooltip='Título do Tutorial', required)
+                    small Máximo 50 caracteres.
+            .form-group
+                label.col-sm-2.control-label(for='descricao') Breve Descrição:
+                    span.obrigatorio(tooltip='Campo obrigatório')  *
+                .col-md-6.col-sm-10
+                    input#descricao.form-control(type='text', placeholder='Descrição', pattern=".{5,100}", title="A descrição deve conter 5 a 100 caracteres.", ng-model='tutorial.descricao', tooltip='Breve descrição do Tutorial', required)
+                    small Máximo 100 caracteres.
+            .form-group
+                label.col-sm-2.control-label(for='categoria') Categoria:
+                    span.obrigatorio(tooltip='Campo obrigatório')  *
+                .col-md-6.col-sm-10
+                    select#categoria.form-control(ng-model='tutorial.categoria', ng-options='categoria.nome for categoria in categorias', tooltip='Categoria do Tutorial', required)
+                        option(value="") Escolha uma opção...
+            .form-group
+                label.col-sm-2.control-label(for='subcategoria') Subcategoria:
+                    span.obrigatorio(tooltip='Campo obrigatório')  *
+                .col-md-6.col-sm-10
+                    select#subcategoria.form-control(ng-model='tutorial.subcategoria',
+                    ng-options='subcategoria.nome for subcategoria in tutorial.categoria.subcategorias', tooltip='Subcategoria', required)
+                        option(value="") Escolha uma opção...
+            //Pré-requisitos
+            .form-group
+                label.col-sm-2.control-label(tooltip='O que é recomendado ser lido antes do tutorial.') Possui pré-requisitos?
+                    span.obrigatorio(tooltip='Campo obrigatório')  *
+                .col-md-6.col-sm-10
+                    label(for='pre-requisitos-nao').radio-inline
+                        input#pre-requisitos-nao(type='radio', name='possuiPreRequisito', ng-model='possuiPreRequisito', value='nao', ng-change='alterarPossuiPreRequisito()')
+                        |  Não
+                    label(for='pre-requisitos-sim').radio-inline
+                        input#pre-requisitos-sim(type='radio', name='possuiPreRequisito', ng-model='possuiPreRequisito', value='sim')
+                        |  Sim
+            .form-group(ng-show='possuiPreRequisito == "sim"')
+                .col-sm-offset-2.col-md-6.col-sm-10
+                    .input-group
+                        input#titulo.form-control(type='text', placeholder='Pré-requisito', ng-model='preRequisito', tooltip='Pré-requisito do Tutorial')
+                        span.input-group-btn
+                            button.btn.btn-default(type='button', ng-click='adicionarPreRequisito(preRequisito)' tooltip='Adicionar Pré-requisito') 
+                                span.fa.fa-plus
+                                |  Adicionar
+            .form-group(ng-show='possuiPreRequisito == "sim" && tutorial.preRequisitos.length > 0')
+                .col-sm-offset-2.col-md-6.col-sm-10
+                    table.table.table-hover.table-striped
+                        thead
+                            tr
+                                th Pré-requisito adicionado
+                                th Remover
+                        tbody
+                            tr(ng-repeat='requisito in tutorial.preRequisitos')
+                                td {{requisito}}
+                                td
+                                    span.fa.fa-remove.clickable(tooltip='Remover pré-requisito', ng-click='removerPreRequisito($index)')
+            //Pós-requisitos
+            .form-group
+                label.col-sm-2.control-label(tooltip='O que é recomendado ser lido após o tutorial.') Possui pós-requisitos?
+                    span.obrigatorio(tooltip='Campo obrigatório')  *
+                .col-md-6.col-sm-10
+                    label(for='pos-requisitos-nao').radio-inline
+                        input#pos-requisitos-nao(type='radio', name='possuiPosRequisito', ng-model='possuiPosRequisito', value='nao', ng-change='alterarPossuiPosRequisito()')
+                        |  Não
+                    label(for='pos-requisitos-sim').radio-inline
+                        input#pos-requisitos-sim(type='radio', name='possuiPosRequisito', ng-model='possuiPosRequisito', value='sim')
+                        |  Sim
+            .form-group(ng-show='possuiPosRequisito == "sim"')
+                .col-sm-offset-2.col-md-6.col-sm-10
+                    .input-group
+                        input#titulo.form-control(type='text', placeholder='Pós-requisito', ng-model='posRequisito', tooltip='Pós-requisito do Tutorial')
+                        span.input-group-btn
+                            button.btn.btn-default(type='button', ng-click='adicionarPosRequisito(posRequisito)' tooltip='Adicionar Pós-requisito') 
+                                span.fa.fa-plus
+                                |  Adicionar
+            .form-group(ng-show='possuiPosRequisito == "sim" && tutorial.posRequisitos.length > 0')
+                .col-sm-offset-2.col-md-6.col-sm-10
+                    table.table.table-hover.table-striped
+                        thead
+                            tr
+                                th Pós-requisito adicionado
+                                th Remover
+                        tbody
+                            tr(ng-repeat='requisito in tutorial.posRequisitos')
+                                td {{requisito}}
+                                td
+                                    span.fa.fa-remove.clickable(tooltip='Remover pós-requisito', ng-click='removerPosRequisito($index)')
+            .form-group
+                label#texto-criacao-label.col-sm-2.control-label(for='texto') Texto:
+                    span.obrigatorio(tooltip='Campo obrigatório')  *
+                .col-sm-10
+                    div(text-angular='text-angular', name='texto', ng-model='tutorial.texto')
+            .form-group
+                .col-sm-offset-2.col-sm-1
+                    button.btn.btn-primary(type='submit') 
+                        span.fa.fa-save
+                        |  Salvar Tutorial
+        small
+            span.obrigatorio * 
+            |  Campos que são obrigatórios.

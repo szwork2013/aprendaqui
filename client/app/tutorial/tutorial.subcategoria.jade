@@ -1,0 +1,33 @@
+h1 
+    span.fa.fa-tag
+    |  Tutoriais da subcategoria: 
+    small {{subcategoria.nome}}
+hr
+
+ol.breadcrumb
+    li
+        a(href='/#/') 
+            span.fa.fa-home
+            |  Início
+    li
+        a(href='/#/tutorial/categoria/{{subcategoria.categoria.id}}')
+            span.fa.fa-tags
+            |  Categoria {{subcategoria.categoria.nome}}
+    li.active
+        span.fa.fa-tag
+        |  Subcategoria {{subcategoria.nome}}
+
+.panel.panel-default
+    .panel-heading Tutoriais
+    .panel-body
+        .row(ng-if='subcategoria.tutoriais.length > 0')
+            .col-sm-4(ng-repeat='tutorial in subcategoria.tutoriais')
+                .well
+                    h3 {{tutorial.titulo}}
+                    p {{tutorial.descricao}}
+                    button.btn.btn-default(ng-click='aprender(tutorial._id)')
+                        span.glyphicon.glyphicon-book
+                        |  Aprender...
+        .row(ng-if='subcategoria.tutoriais.length == 0')
+            .col-sm-12
+                p Não existem tutoriais nesta subcategoria por enquanto...

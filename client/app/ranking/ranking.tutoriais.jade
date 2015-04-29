@@ -1,0 +1,46 @@
+h1 
+    span.fa.fa-group
+    |  Ranking
+    small  Tutoriais
+hr
+
+ol.breadcrumb
+    li
+        a(href='/#/') 
+            span.fa.fa-home
+            |  Início
+    li.active
+        span.fa.fa-book
+        |  Ranking Tutoriais
+
+.panel.panel-default(ng-if='ranking.estrelas.length == 0')
+    .panel-heading Tutoriais não foram ranqueados
+    .panel-body
+        .lead Nenhum tutorial foi classificado até o momento.
+
+.panel.panel-default(ng-if='ranking.estrelas.length > 0')
+    .panel-heading Os 10 melhores tutoriais
+    .panel-body
+        .lead 
+            span.fa.fa-book
+            |  Tutoriais que obtiveram as melhores classificações:
+        table.table.table-striped.table-hover.table-bordered
+            thead
+                tr
+                    th Colocação
+                    th Título
+                    th Autor
+                    th(title='Número de usuários que classificaram este tutorial.') Classificações
+                    th(title='Média de estrelas adquiridas na classificação.') Média de Estrelas
+            tbody
+                tr(ng-repeat='ranking in ranking.estrelas')
+                    td {{$index + 1}}°
+                    td 
+                        a.clickable(ng-click='visualizarTutorial(ranking.tutorial._id)')
+                            | {{ranking.tutorial.titulo}}
+                    td 
+                        a.clickable(ng-click='informacoesUsuario(ranking.tutorial.autor._id)')
+                            | {{ranking.tutorial.autor.nome}}
+                    td {{ranking.classificacoes}}
+                    td 
+                        rating(ng-model='ranking.mediaNotas', max='5', readonly='true', disabled)                        }

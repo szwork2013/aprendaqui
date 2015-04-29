@@ -1,0 +1,378 @@
+/* BASIC LAYOUT */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body > .container {
+    padding: 60px 15px 0;
+    padding-bottom:60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.view {
+    margin-top: 30px;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+.navbar-header {
+    margin-left: 2%;
+}
+
+.navbar-collapse {
+    margin-right: 2%;
+}
+
+.container {
+    width: 85%;
+}
+
+.jumbotron {
+    padding: 15px !important;
+}
+
+.logo:hover {
+    color: #E2E1DF;
+}
+
+.obrigatorio {
+    color: red;
+}
+
+/* GERAL */
+
+.clickable {
+    cursor: pointer;
+}
+
+.numeros {
+    margin-right: 5px;
+}
+
+/* AUTENTICAÇÃO */
+
+.facebook-color, .facebook-color:hover, .facebook-color:active, .facebook-color:visited {
+    color: #3b5998;
+}
+
+.google-color, .google-color:hover, .google-color:active, .google-color:visited {
+    color: #d34836;
+}
+
+.social-icon {
+    margin-right: 2%;
+}
+
+.usuario-logado-nome {
+    color: #fff !important;
+}
+
+/* TUTORIAL */
+
+/* Toolbar do textangular. */
+.ta-toolbar {
+    margin-bottom: 1%;
+}
+
+.image-autor {
+    width: 80px;
+    height: 80px
+}
+
+.image-usuario {
+    width: 200px;
+    height: 170px
+}
+
+#texto-criacao-label {
+    margin-top: 3%;
+}
+
+/* Correção Dropdown ng-repeat */
+
+.dropdown-menu>span>li>a {
+    font-size: 11px;
+    line-height: 22px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.dropdown-menu>span>li>a {
+    display: block;
+    padding: 3px;
+    clear: both;
+    color: #98978b;
+    white-space: nowrap;
+}
+
+/* CHAT */
+
+
+@media (max-width: 1500px) {
+    .autor-chat-margin {
+        margin-right: 5%;
+    }
+}
+
+.image-autor-chat {
+    width: 60px;
+    height: 60px;
+}
+
+@media (max-height: 899px) {
+    .chat-scroll {
+        max-height: 315px;
+        overflow: auto;
+    }
+}
+
+@media (min-height: 900px) {
+    .chat-scroll {
+        max-height: 450px;
+        overflow: auto;
+    }
+}
+
+@media (min-height: 1000px) {
+    .chat-scroll {
+        max-height: 500px;
+        overflow: auto;
+    }
+}
+
+.group-chat-online {
+    padding-bottom: 0px !important;
+}
+
+.chat-row {
+    margin-bottom: 30px;
+}
+
+.minha-mensagem {
+    margin-left: 3%;
+}
+
+/* NG ANIMATE */
+
+.view {
+    -webkit-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+}
+
+.view.ng-enter {
+    opacity: 0;
+    transition-duration: 400ms;
+    -webkit-transition-duration: 400ms;
+}
+
+.view.ng-enter-active {
+    opacity: 1;
+}
+
+.view.ng-leave {
+    opacity: 1;
+    transition-duration: 400ms;
+    -webkit-transition-duration: 400ms;
+}
+
+.view.ng-leave-active {
+    opacity: 0;
+}
+
+.view.ng-hide-add {
+    transition-duration: 400ms;
+    -webkit-transition-duration: 400ms;
+    opacity: 1;
+}
+
+.view.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+}
+
+.view.ng-hide-remove {
+    transition-duration: 400ms;
+    -webkit-transition-duration: 400ms;
+    display: block !important;
+    opacity: 0;
+}
+
+.view.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}
+
+/* Loading */
+
+#loading-bar {
+  background: #2c3e50;
+}
+
+#loading-bar-spinner {
+  border-top-color:  #2c3e50;
+  border-left-color: #2c3e50;
+  margin-top: 10px;
+}
+
+#loading-bar .peg {
+  -moz-box-shadow: #2c3e50 1px 0 6px 1px;
+  -ms-box-shadow: #2c3e50 1px 0 6px 1px;
+  -webkit-box-shadow: #2c3e50 1px 0 6px 1px;
+  box-shadow: #2c3e50 1px 0 6px 1px;
+}
+
+#loading-content {
+    color: #3e3f3a !important;
+}
+
+/* Menu Dropdown multilevel */
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+/* Panel */
+
+.panel {
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         1px 1px 5px 3px #ccc;
+}
+
+.panel {
+  .panel-heading {
+    border-bottom: 0;
+    font-weight: 400;
+    //font-weight: bold;
+    font-size: 14px;
+    a {
+      text-decoration: none !important;
+    }
+  }
+  &.panel-default {
+    border-top-width: 7px;
+  }
+}
+
+//Tabs
+ul.nav-tabs li a {
+    font-weight: 400;
+    font-size: 13px;
+}
+
+//Accordion painel
+.panel-title a span {
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.well {
+  border: 1px solid #ABABA6;
+}
+
+.jumbotron {
+  border: 1px solid #ABABA6;
+}
+
+#loading {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    background-color: #ffffff;
+    top: 0;
+    left: 0;
+    color: #e1e1e1;
+}
+
+#loading #loading-wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+} 
+ 
+#loading #loading-content {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Alerts */
+
+.alert-default {
+    background-color: #f8f5f0;
+    border: 1px solid #ABABA6;
+}

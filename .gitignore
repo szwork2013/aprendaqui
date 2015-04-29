@@ -1,0 +1,7 @@
+/client/bower_components
+/client/node_modules
+/client/dist
+/server/node_modules
+server/uploads
+*.html
+*.css

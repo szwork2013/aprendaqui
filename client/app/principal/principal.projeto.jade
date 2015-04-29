@@ -1,0 +1,83 @@
+h1 
+    span.fa.fa-cloud.logo 
+    |  O Projeto
+hr
+
+ol.breadcrumb
+    li
+        a(href='/#/') 
+            span.fa.fa-home
+            |  Início
+    li.active
+        span.fa.fa-cloud 
+        |  O Projeto
+
+.panel.panel-default
+    .panel-heading Objetivo
+    .panel-body
+        
+        .lead Qual o propósito de construção da aplicação?
+
+        p
+            | O objetivo do presente trabalho, é desenvolver um sistema web para aprendizagem a distância colaborativa, onde os 
+            | usuários irão compartilhar conhecimento, avaliar o conhecimento gerado e interagir entre si trocando experiências e 
+            | aprendizados. Este projeto visa organizar o conhecimento em um só local, separando o conhecimento em categorias. 
+        
+        p
+            | A interação dos usuários no sistema será importante para a geração de conhecimento, portanto é necessário que os 
+            | usuários colaborem, criando conteúdo, apontando melhorias e críticas construtivas, para agregar qualidade ao conhecimento. 
+            | Os usuários irão interagir através de comentários, classificação de conteúdos, chats e rankings.
+        
+        p
+            | O sistema desenvolvido será um grande fonte de conhecimento, possibilitando a todos os usuários grande aprendizado e 
+            | aprofundamento em diversas áreas de conhecimento. Com o aprendizado adquirido através desta aplicação, 
+            | o usuário poderá se especializar, melhorando suas habilidades técnicas, e posteriormente aplicar seus novos conhecimentos 
+            | nas organizações.
+        
+        .lead Entre os objetivos específicos destacam-se:
+
+        ul
+            li Proporcionar que usuários criem e gerenciem o conhecimento;
+            li Possibilitar comunicação e interação entre os usuários;
+            li Viabilizar classificação de tutoriais pelos usuários.
+
+
+.panel.panel-default
+    .panel-heading Tecnologias
+    .panel-body
+        .lead Foram utilizadas as seguintes tecnologias para o desenvolvimento do trabalho:
+
+        dl
+            dt Back-end: 
+            dd Node.JS(Express, Mongoose, Socket.io)
+            dt Front-End: 
+            dd HTML5(Jade), CSS3(Less), JavaScript(AngularJs, Gulp, Bower, Socket.io)
+            dt Banco de Dados:
+            dd MongoDB
+            dt Deploy Server:
+            dd Ubuntu Server
+
+.panel.panel-default
+    .panel-heading Números
+    .panel-body
+
+        .lead Utilização:
+
+        span.fa.fa-user.fa-3x.fa-border.numeros(tooltip='Número de Usuários')
+            |  {{numeros.usuarios}}
+        span.fa.fa-book.fa-3x.fa-border.numeros(tooltip='Número de Tutoriais')
+            |  {{numeros.tutoriais}}
+        span.fa.fa-comments.fa-3x.fa-border.numeros(tooltip='Número de Comentários')
+            |  {{numeros.comentarios}}
+        span.fa.fa-group.fa-3x.fa-border.numeros(tooltip='Número de Classificações')
+            |  {{numeros.classificacoes}}
+
+.panel.panel-default
+    .panel-heading Código Fonte
+    .panel-body
+
+        .lead Ajude-nos a aprimorar a plataforma:
+
+        a(href='https://github.com/sergioaugrod/aprendaqui')
+            span.fa.fa-github-alt.fa-2x
+            |  https://github.com/sergioaugrod/aprendaqui

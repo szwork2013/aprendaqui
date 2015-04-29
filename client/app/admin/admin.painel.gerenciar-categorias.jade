@@ -1,0 +1,47 @@
+h3 Gerenciar Categorias
+hr
+
+.panel.panel-default
+	.panel-heading Cadastro de Categoria
+	.panel-body
+		form.form-horizontal(role='form', name='formulario', ng-submit='cadastrarCategoria(categoria)')
+			.form-group
+				label.col-sm-3.control-label(for='nome-categoria') Nome da Categoria:
+					span.obrigatorio(tooltip='Campo obrigatório')  *
+				.col-sm-4
+					input#nome-categoria.form-control(type='text', pattern=".{1,40}", title="O nome da categoria deve conter 1 a 40 caracteres.", placeholder='Nome da Categoria', ng-model='categoria.nome', required)
+				.col-sm-2
+					button.btn.btn-default(type='submit') 
+						span.fa.fa-plus
+						|  Cadastrar Categoria
+		small
+			span.obrigatorio * 
+			|  Campos que são obrigatórios.
+
+h4 Lista de Categorias
+
+.well(ng-if='categorias.length == 0')
+	p Nenhuma subcategoria foi cadastrada até este momento...
+
+table.table.table-striped.table-hover(ng-table="tableCategorias", ng-show='categorias.length > 0')
+	tr(ng-repeat='categoria in $data')
+		td(data-title="'Nome'") {{categoria.nome}}
+		td(data-title="'Data de Criação'") {{categoria.data}}
+		td(data-title="'Criador'") {{categoria.criador.nome}}
+		td(data-title="'Ativa'")
+			span(ng-if='categoria.ativa') Sim
+			span(ng-if='!categoria.ativa') Não
+		td(data-title="'Ações'")
+			.btn-group
+				button.btn.btn-default.dropdown-toggle.btn-sm(type='button', data-toggle='dropdown', aria-expanded='false')
+					| Ações 
+					span.caret
+				ul.dropdown-menu(role='menu')
+					li.clickable(ng-if='categoria.ativa')
+						a(ng-click='desativarCategoria(categoria._id)') 
+							span.fa.fa-stop
+							|  Desativar
+					li.clickable(ng-if='!categoria.ativa')
+						a(ng-click='ativarCategoria(categoria._id)') 
+							span.fa.fa-play
+							|  Ativar

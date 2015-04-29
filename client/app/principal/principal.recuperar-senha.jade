@@ -1,0 +1,25 @@
+form.form-horizontal(role='form', name='formulario', ng-submit='recuperar(email)')
+
+	.modal-header
+		h3.modal-title Recuperação de Senha
+
+	.modal-body
+		.lead Digite o seu e-mail para gerar uma nova senha:
+		.form-group
+			label.col-sm-2.control-label(for='cad-email') Email:
+				span.obrigatorio(tooltip='Campo obrigatório')  *
+			.col-sm-6
+				input#cad-email.form-control(type='email', placeholder='Email', ng-model='email', required)
+
+		small
+			span.obrigatorio * 
+			|  Campos que são obrigatórios.
+
+
+	.modal-footer
+		button.btn.btn-default.pull-left(type='button', ng-click='fechar()')
+			span.fa.fa-remove
+			|  Fechar
+		button.btn.btn-primary(type='submit') 
+			span.fa.fa-lock
+			|  Recuperar Senha

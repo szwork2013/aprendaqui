@@ -1,0 +1,20 @@
+[
+    "app/app.module.js",
+    "app/app.constants.js",
+    "app/widgets/widgets.module.js",
+    "app/widgets/*.js",
+    "app/services/services.module.js",
+    "app/services/*.js",
+    "app/principal/principal.module.js",
+    "app/principal/*.js",
+    "app/tutorial/tutorial.module.js",
+    "app/tutorial/*.js",
+    "app/chat/chat.module.js",
+    "app/chat/*.js",
+    "app/ranking/ranking.module.js",
+    "app/ranking/*.js",
+    "app/painel/painel.module.js",
+    "app/painel/*.js",
+    "app/admin/admin.module.js",
+    "app/admin/*.js"
+]

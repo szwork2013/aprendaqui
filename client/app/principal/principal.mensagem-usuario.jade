@@ -1,0 +1,25 @@
+form.form-horizontal(role='form', name='formulario', ng-submit='formulario.$valid && enviar(mensagem)')
+
+	.modal-header
+		h3.modal-title Envio de Mensagem para {{usuario.nome}}
+
+	.modal-body
+		.lead Mensagem:
+			span.obrigatorio(tooltip='Campo obrigatório')  *
+		.row
+			.col-sm-12
+				textarea#comentario.form-control(placeholder='Mensagem', ng-model='mensagem', required)
+		
+		br
+
+		small
+			span.obrigatorio * 
+			|  Campos que são obrigatórios.
+
+	.modal-footer
+		button.btn.btn-default.pull-left(type='button', ng-click='cancelar()')
+			span.fa.fa-remove
+			|  Cancelar
+		button.btn.btn-primary(type='submit')
+			span.fa.fa-comments
+			|  Enviar Mensagem

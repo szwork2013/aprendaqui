@@ -1,0 +1,15 @@
+h3 Alterar Foto
+hr
+form.form-horizontal(role='form', name='formulario')
+	.form-group
+		label.col-sm-2.control-label Foto Atual:
+		.col-sm-4
+			img.media-object.image-autor.img-circle(ng-src="{{fotoAtual}}", tooltip="Foto Atual")
+	.form-group
+		label.col-sm-2.control-label(for='foto') Foto:
+		.col-sm-4
+			.button.btn.btn-primary#foto(ng-file-select='', ng-model='foto', accept="image/*", ng-change='alterarFoto(foto)') 
+				span.fa.fa-file-image-o
+				|  Selecione a foto
+			br
+			| {{foto[0].name}}

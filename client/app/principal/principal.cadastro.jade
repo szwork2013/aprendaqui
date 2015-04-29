@@ -1,0 +1,46 @@
+form.form-horizontal(role='form', name='formulario', ng-submit='cadastrar(usuario, senhaNovamente)')
+
+	.modal-header
+		h3.modal-title Cadastro de Usuário
+
+	.modal-body
+		.form-group
+			label.col-sm-4.control-label(for='cad-email') Email:
+				span.obrigatorio(tooltip='Campo obrigatório')  *
+			.col-sm-6
+				input#cad-email.form-control(type='email', pattern=".{5,100}", title="O email deve conter 5 a 100 caracteres.", placeholder='Email', tooltip='E-mail que será utilizado para autenticar.' ng-model='usuario.email', required)
+		.form-group(ng-if="!autenticacao")
+			label.col-sm-4.control-label(for='cad-nome') Nome:
+				span.obrigatorio(tooltip='Campo obrigatório')  *
+			.col-sm-6
+				input#cad-nome.form-control(type='text', pattern=".{3,100}", tooltip='Nome do usuário', title="O nome deve conter 3 a 100 caracteres.", placeholder='Nome', ng-model='usuario.nome', required)
+		.form-group(ng-if="!autenticacao")
+			label.col-sm-4.control-label(for='cad-foto') Foto:
+				span.obrigatorio(tooltip='Campo obrigatório')  *
+			.col-sm-4
+				#cad-foto.btn.btn-default.button(ng-file-select='', tooltip='Foto do usuário.', ng-model='usuario.foto', accept="image/*")
+					span.fa.fa-file-image-o
+					|  Selecione a foto
+				| {{usuario.foto[0].name}}
+		.form-group
+			label.col-sm-4.control-label(for='cad-senha') Senha:
+				span.obrigatorio(tooltip='Campo obrigatório')  *
+			.col-sm-6
+				input#cad-senha.form-control(type='password', pattern=".{5,10}", tooltip='Senha que será utilizada para autenticar.', title="A senha deve conter 5 a 10 caracteres.", placeholder='Senha', ng-model='usuario.senha', required)
+		.form-group
+			label.col-sm-4.control-label(for='cad-senha-novamente') Senha Novamente:
+				span.obrigatorio(tooltip='Campo obrigatório')  *
+			.col-sm-6
+				input#cad-senha-novamente.form-control(type='password', tooltip='Confirmação da senha digitada acima.' pattern=".{5,10}", title="A senha deve conter 5 a 10 caracteres.", placeholder='Senha', ng-model='senhaNovamente', required)
+
+		small
+			span.obrigatorio * 
+			|  Campos que são obrigatórios.
+
+	.modal-footer
+		button.btn.btn-default.pull-left(type='button', ng-click='fechar()')
+			span.fa.fa-remove
+			|  Fechar
+		button.btn.btn-primary(type='submit') 
+			span.fa.fa-save
+			|  Cadastrar

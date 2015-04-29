@@ -1,0 +1,49 @@
+.row(ng-if='bemVindo')
+    .col-sm-6
+        .alert.alert-default.alert-dismissible(role='alert')
+            button.close(type='button', data-dismiss='alert', aria-label='Close')
+                span(aria-hidden='true') ×
+            |  Olá 
+            strong {{usuarioLogado.nome}},
+            |  seja bem vindo a aplicação.
+    
+.jumbotron
+    h2 Compartilhe um conhecimento...
+    p Escreva agora mesmo um tutorial em algum assunto ou área de seu interesse.
+    button.btn.btn-primary(ng-click='goTo("/tutorial/criacao")', tooltip='Escrever um novo tutorial')
+        span.fa.fa-pencil-square-o.fa-2x
+        |  Criar Tutorial
+
+h2 Tutoriais
+    small  Aprenda um novo conhecimento...
+hr
+
+.panel.panel-default
+    .panel-heading Melhores Avaliados
+    .panel-body
+        .row(ng-if='tutoriaisMelhores.length > 0')
+            .col-sm-4(ng-repeat='ranking in tutoriaisMelhores | limitTo: 6')
+                .well.tutorial
+                    h3 {{ranking.tutorial.titulo}}
+                    p {{ranking.tutorial.descricao | limitTo: 44}}{{ranking.tutorial.descricao.length > 43 ? '...' : ''}}
+                    button.btn.btn-default(ng-click='aprender(ranking.tutorial._id)', tooltip='Visualizar o tutorial')
+                        span.glyphicon.glyphicon-book
+                        |  Aprender...
+        .row(ng-if='tutoriaisMelhores.length == 0')
+            .col-sm-12
+                .lead Não existem tutoriais avaliados.
+
+.panel.panel-default
+    .panel-heading Recentes
+    .panel-body
+        .row(ng-if='tutoriaisRecentes.length > 0')
+            .col-sm-4(ng-repeat='tutorial in tutoriaisRecentes | limitTo: 6')
+                .well.tutorial
+                    h3 {{tutorial.titulo}}
+                    p {{tutorial.descricao | limitTo: 44}}{{tutorial.descricao.length > 43 ? '...' : ''}}
+                    button.btn.btn-default(ng-click='aprender(tutorial._id)', tooltip='Visualizar o tutorial')
+                        span.glyphicon.glyphicon-book
+                        |  Aprender...
+        .row(ng-if='tutoriaisRecentes.length == 0')
+            .col-sm-12
+                .lead Não existem tutoriais cadastrados.

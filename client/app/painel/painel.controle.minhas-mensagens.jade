@@ -1,0 +1,16 @@
+h3 Minhas Mensagens
+hr
+
+.well(ng-if='mensagens.length == 0')
+	p Você não possui nenhuma mensagem até o momento...
+
+accordion(close-others='oneAtATime', ng-show='mensagens.length > 0')
+	accordion-group(ng-repeat='mensagem in mensagens', heading='Mensagem do {{mensagem.autor.nome}} | {{mensagem.data}}')
+		| {{mensagem.texto}}
+		hr
+		button.btn.btn-default.pull-left(ng-click='excluirMensagem(mensagem._id)')
+			span.fa.fa-remove
+			|  Excluir
+		button.btn.btn-primary.pull-right(ng-click='responder(mensagem.autor._id, mensagem.autor.nome)')
+			span.fa.fa-reply
+			|  Responder

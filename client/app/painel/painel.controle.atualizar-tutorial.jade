@@ -1,0 +1,30 @@
+form.form-horizontal(role='form', name='formulario', ng-submit='formulario.$valid && atualizar(tutorial)')
+
+	.modal-header
+		h3.modal-title Atualizar Tutorial
+			small  {{titulo}}
+
+	.modal-body
+		.row
+			.col-sm-2
+				label.control-label(for='titulo') Texto:
+					span.obrigatorio(tooltip='Campo obrigatório')  *
+		br
+		.row
+			.col-sm-12
+				div(text-angular='',
+				ta-toolbar="[['h1','h2','h3', 'h4', 'quote', 'p',], ['bold','italics', 'underline'], ['ul', 'ol'], " +
+				"['undo', 'redo', 'clear'], ['justifyLeft','justifyCenter','justifyRight'], ['insertImage', 'insertLink', " +
+				"'insertVideo']]",ng-model='tutorial.texto', required)
+
+		small
+			span.obrigatorio * 
+			|  Campos que são obrigatórios.
+
+	.modal-footer
+		button.btn.btn-default.pull-left(type='button', ng-click='fechar()')
+			span.fa.fa-remove
+			|  Fechar
+		button.btn.btn-primary(type='submit') 
+			span.fa.fa-save
+			|  Atualizar Tutorial

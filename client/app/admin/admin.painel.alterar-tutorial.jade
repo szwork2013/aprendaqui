@@ -1,0 +1,70 @@
+form.form-horizontal(role='form', name='formulario', ng-submit='formulario.$valid && alterar(tutorial)')
+
+	.modal-header
+
+		h3.modal-title Alterar Tutorial 
+			small {{tutorial.titulo}}
+
+	.modal-body
+
+		.row
+			.col-sm-2
+				label.control-label(for='titulo') Título:
+					span.obrigatorio(tooltip='Campo obrigatório')  *
+		.row
+			.col-sm-4
+				input#titulo.form-control(type='text', placeholder='Título', ng-model='tutorial.titulo', required)
+
+		.row
+			.col-sm-2
+				label.control-label(for='descricao') Descrição:
+					span.obrigatorio(tooltip='Campo obrigatório')  *
+		.row
+			.col-sm-4
+				input#descricao.form-control(type='text', placeholder='Descrição', ng-model='tutorial.descricao', required)
+
+		.row
+			.col-sm-2
+				label.control-label(for='categoria') Categoria:
+					span.obrigatorio(tooltip='Campo obrigatório')  *
+		.row
+			.col-sm-4
+				select#categoria.form-control(ng-model='tutorial.categoria', ng-options='categoria._id as categoria.nome for categoria in categorias', ng-change='alterarSubcategoria(tutorial.categoria)' required)
+					option(value="") Escolha uma opção...
+		
+		.row
+			.col-sm-2
+				label.control-label(for='subcategoria') Subcategoria:
+					span.obrigatorio(tooltip='Campo obrigatório')  *
+		.row
+			.col-sm-4
+				select#subcategoria.form-control(ng-model='tutorial.subcategoria',
+				ng-options='subcategoria._id as subcategoria.nome for subcategoria in subcategorias', required)
+					option(value="") Escolha uma opção...
+
+		.row
+			.col-sm-2
+				label.control-label(for='texto') Texto:
+					span.obrigatorio(tooltip='Campo obrigatório')  *
+		
+		br
+
+		.row
+			.col-sm-12
+				div(text-angular='',
+				ta-toolbar="[['h1','h2','h3', 'h4', 'p',], ['bold','italics', 'underline'], ['ul', 'ol'], " +
+				"['undo', 'redo', 'clear'], ['justifyLeft','justifyCenter','justifyRight'], ['insertImage', 'insertLink', " +
+				"'insertVideo'], ['html']]",ng-model='tutorial.texto', required)
+
+		small
+			span.obrigatorio * 
+			|  Campos que são obrigatórios.
+
+	.modal-footer
+		
+		button.btn.btn-default.pull-left(type='button', ng-click='sair()')
+			span.fa.fa-remove
+			|  Fechar
+		button.btn.btn-primary(type='submit') 
+			span.fa.fa-save
+			|  Alterar Tutorial

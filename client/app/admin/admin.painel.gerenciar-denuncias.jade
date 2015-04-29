@@ -1,0 +1,16 @@
+h3 Gerenciar Denúncias
+hr
+
+.well(ng-if='denuncias.length == 0')
+	p Não existem denúncias enviadas no momento...
+
+accordion(close-others='oneAtATime', ng-show='denuncias.length > 0')
+	accordion-group(ng-repeat='denuncia in denuncias', heading='Denuncia do {{denuncia.denunciante.nome}} ao tutorial {{denuncia.tutorial.titulo}} | {{denuncia.data}}')
+		| {{denuncia.motivo}}
+		hr
+		button.btn.btn-default.pull-left(ng-click='excluirDenuncia(denuncia._id)')
+			span.fa.fa-remove
+			|  Excluir
+		button.btn.btn-default.pull-right(ng-click='suspender(denuncia.tutorial._id)')
+			span.fa.fa-thumbs-o-down
+			|  Suspender

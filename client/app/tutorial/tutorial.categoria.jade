@@ -1,0 +1,29 @@
+h1 
+    span.fa.fa-tags
+    |  Tutoriais da categoria: 
+    small {{categoria.nome}}
+hr
+
+ol.breadcrumb
+    li
+        a(href='/#/') 
+            span.fa.fa-home
+            |  Início
+    li.active
+        span.fa.fa-tags
+        |  Categoria {{categoria.nome}}
+
+.panel.panel-default
+    .panel-heading Tutoriais
+    .panel-body
+        .row(ng-if='categoria.tutoriais.length > 0')
+            .col-sm-4(ng-repeat='tutorial in categoria.tutoriais')
+                .well
+                    h3 {{tutorial.titulo}}
+                    p {{tutorial.descricao}}
+                    button.btn.btn-default(ng-click='aprender(tutorial._id)')
+                        span.glyphicon.glyphicon-book
+                        |  Aprender...
+        .row(ng-if='categoria.tutoriais.length == 0')
+            .col-sm-12
+                p Não existem tutoriais nesta categoria por enquanto...

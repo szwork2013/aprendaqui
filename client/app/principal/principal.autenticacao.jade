@@ -1,0 +1,53 @@
+h1 Autenticação
+hr
+
+ol.breadcrumb
+    li
+        a(href='/#/') 
+            span.fa.fa-home
+            |  Início
+    li.active
+        span.fa.fa-sign-in 
+        |  Autenticação
+
+.panel.panel-default
+    .panel-heading Autentique ou Cadastre
+    .panel-body
+        .row
+            .col-md-6
+                .lead Autentique com e-mail e senha:
+                form.form-horizontal(role='form', name='formulario', ng-submit='autenticar()')
+                    .form-group
+                        label.col-sm-2.control-label(for='email') Email:
+                        .col-md-10
+                            .input-group
+                                .input-group-addon
+                                    span.fa.fa-envelope
+                                input#email.form-control(type='email', placeholder='Email', ng-model='usuario.email', tooltip='E-mail do usuário', required)
+                    .form-group
+                        label.col-sm-2.control-label(for='senha') Senha:
+                        .col-md-10
+                            .input-group
+                                .input-group-addon
+                                    span.fa.fa-lock
+                                input#senha.form-control(type='password', placeholder='Senha', ng-model='usuario.senha', tooltip='Senha do usuário', required)
+                    .form-group
+                        .col-md-12
+                            .pull-right
+                                button.btn.btn-primary(type='submit') 
+                                    span.fa.fa-sign-in
+                                    |  Autenticar
+                    .form-group
+                        .col-sm-offset-2.col-sm-4
+                            a.clickable(ng-click='abrirCadastro()')
+                                | Quero me cadastrar.
+                    .form-group
+                        .col-sm-offset-2.col-sm-4
+                            a.clickable(ng-click='recuperarSenha()')
+                                | Esqueci minha senha.
+            .col-md-6
+                .lead Ou utilize sua rede social favorita para entrar:
+                a(ng-href='/usuario/autenticar/facebook').facebook-color.social-icon
+                    span(tooltip='Autenticar pelo Facebook').fa.fa-facebook-official.fa-4x.clickable
+                a(ng-href='/usuario/autenticar/google').google-color.social-icon
+                    span(tooltip='Autenticar pelo Google+').fa.fa-google-plus-square.fa-4x.clickable

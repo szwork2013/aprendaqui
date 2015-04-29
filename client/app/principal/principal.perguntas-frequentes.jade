@@ -1,0 +1,23 @@
+h1 
+    span.fa.fa-question-circle
+    |  Perguntas Frequentes
+hr
+
+.well(ng-if='perguntas.length == 0')
+    p Não existem perguntas frequentes cadastradas até o momento...
+
+ol.breadcrumb
+    li
+        a(href='/#/') 
+            span.fa.fa-home
+            |  Início
+    li.active
+        span.fa.fa-question-circle
+        |  Perguntas Frequentes
+
+accordion(close-others='oneAtATime', ng-show='perguntas.length > 0')
+    accordion-group(ng-repeat='pergunta in perguntas', is-open='pergunta.status.open')
+        accordion-heading
+            | {{pergunta.titulo}}
+            span.pull-right.glyphicon(ng-class="{'glyphicon-chevron-down': pergunta.status.open, 'glyphicon-chevron-right': !pergunta.status.open}")
+        | {{pergunta.mensagem}}

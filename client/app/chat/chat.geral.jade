@@ -1,0 +1,57 @@
+h1 
+	span.fa.fa-comments-o.logo
+	|  CHAT
+hr
+
+ol.breadcrumb
+	li
+		a(href='/#/') 
+			span.fa.fa-home
+			|  Início
+	li.active
+		span.fa.fa-comments-o 
+		|  CHAT
+
+form(name='formulario' ng-submit='enviarMensagem()')
+
+	.row.chat-row
+		.col-md-8.col-sm-7
+
+			.row
+				.col-sm-12
+					.panel.panel-default
+						.panel-heading Mensagens
+						.panel-body.chat-scroll
+							.lead(ng-if='respostas.length == 0') Nenhuma mensagem foi enviada desde que você entrou...
+							.mensagens(ng-repeat='resposta in respostas track by $index')
+								.row(ng-class='{"minha-mensagem":usuarioLogado._id == resposta.usuario.id}')
+									.col-md-1.col-sm-3.autor-chat-margin
+										a.clickable(ng-click='informacoesUsuario(resposta.usuario.id)')
+											img.media-object.image-autor-chat.thumbnail(ng-src='{{resposta.usuario.foto}}', tooltip-placement='right', tooltip='{{resposta.usuario.nome}}')
+									.col-md-7.col-sm-7
+										.well
+											strong(ng-if='usuarioLogado._id != resposta.usuario.id') {{resposta.usuario.nome}}:
+											strong(ng-if='usuarioLogado._id == resposta.usuario.id') Eu:
+											|  {{resposta.mensagem}}
+
+			.row
+				.col-md-10.col-sm-10
+					input#mensagem.form-control.input-lg(ng-model='mensagem', name='mensagem', placeholder='Digite a mensagem que deseja enviar...', required)
+				.col-md-2.col-sm-2
+					button.btn.btn-primary(type='submit')
+						span.fa.fa-comment
+						|  Enviar
+
+		.col-md-4.col-sm-5
+			.panel.panel-default
+				.panel-heading Usuários Online:
+				.panel-body
+					ul.list-group
+						li.list-group-item.group-chat-online(ng-repeat='usuarioLogado in usuariosLogado')
+							.row
+								.col-md-3.col-sm-5
+									a.clickable(ng-click='informacoesUsuario(usuarioLogado._id)')
+										img.media-object.image-autor-chat.thumbnail(ng-src='{{usuarioLogado.fotoPath}}', tooltip='{{usuarioLogado.nome}}')
+								.col-md-8.col-sm-7
+									.well
+										| {{usuarioLogado.nome.split(" ")[0]}}

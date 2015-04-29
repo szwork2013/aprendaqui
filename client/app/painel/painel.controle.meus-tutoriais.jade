@@ -1,0 +1,41 @@
+h3 Meus Tutoriais
+hr
+	
+.well(ng-if='tutoriais.length == 0')
+	p Você não escreveu nenhum tutorial até o momento...
+
+table.table.table-striped.table-hover(ng-table="tableTutoriais", ng-show='tutoriais.length > 0')
+	tr(ng-repeat='tutorial in $data')
+		td(data-title="'Titulo'") {{tutorial.titulo}}
+		td(data-title="'Categoria'") {{tutorial.categoria.nome}}
+		td(data-title="'Subcategoria'") {{tutorial.subcategoria.nome}}
+		//td(data-title="'Data'") {{tutorial.data}}
+		td(data-title="'Ativo'")
+			span(ng-if='tutorial.ativo') Sim
+			span(ng-if='!tutorial.ativo') Não
+		td(data-title="'Suspenso'")
+			span(ng-if='tutorial.suspensao.suspenso', tooltip='{{tutorial.suspensao.motivo}}') Sim
+			span(ng-if='!tutorial.suspensao.suspenso') Não
+		td(data-title="'Ações'")
+			.btn-group
+				button.btn.btn-default.dropdown-toggle.btn-sm(type='button', data-toggle='dropdown', aria-expanded='false')
+					| Ações 
+					span.caret
+				ul.dropdown-menu(role='menu')
+					li.clickable
+						a(ng-click='visualizar(tutorial._id)')
+							span.fa.fa-book
+							|  Visualizar
+					li.clickable
+						a(ng-click='atualizar(tutorial._id)') 
+							span.fa.fa-edit
+							|  Atualizar
+					li.clickable(ng-if='tutorial.ativo')
+						a(ng-click='desativar(tutorial._id)') 
+							span.fa.fa-stop
+							|  Desativar
+					li.clickable(ng-if='!tutorial.ativo')
+						a(ng-click='ativar(tutorial._id)') 
+							span.fa.fa-play
+							|  Ativar
+

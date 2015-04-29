@@ -1,0 +1,37 @@
+.modal-header
+	h3.modal-title Informações do {{informacoes.usuario.nome}}
+
+.modal-body
+	.row
+		.col-sm-5
+			img.image-usuario.img-circle(ng-src='{{informacoes.usuario.fotoPath}}', tooltip='Foto do Usuário')
+		.col-sm-6
+			dl
+				dt Nome:
+				dd 
+					span.fa.fa-user
+					|  {{informacoes.usuario.nome}}
+				dt Número de Tutoriais escritos:
+				dd 
+					span.fa.fa-book
+					|  {{informacoes.numeros.tutoriais}}
+				dt Número de Classificações em Tutoriais:
+				dd 
+					span.fa.fa-group
+					|  {{informacoes.numeros.classificacoes}}
+				dt Total de Estrelas:
+				dd
+					span.fa.fa-star
+					|  {{informacoes.classificacao.notas}}
+				dt Média de Estrelas:
+				dd 
+					span.fa.fa-star
+					|  {{informacoes.classificacao.mediaNotas}}
+
+.modal-footer
+	button.btn.btn-default.pull-left(type='button', ng-click='fechar()')
+		span.fa.fa-remove
+		|  Fechar
+	button.btn.btn-primary.pull-right(type='submit', ng-click='enviarMensagem()', ng-if='autenticado && usuarioLogado._id != informacoes.usuario._id')
+		span.fa.fa-comments
+		|  Enviar Mensagem

@@ -1,0 +1,36 @@
+h1 
+    span.fa.fa-search
+    |  Pesquisa de Tutoriais
+
+hr
+
+.lead 
+    | Pesquisando tutoriais com o título:
+    strong  {{filtro}}
+
+ol.breadcrumb
+    li
+        a(href='/#/') 
+            span.fa.fa-home
+            |  Início
+    li.active(ng-if='tipo == "estrelas"')
+        span.fa.fa-search 
+        |  Filtro {{filtro}}
+    li.active(ng-if='tipo != "estrelas"')
+        span.fa.fa-search 
+        |  Filtro {{filtro}}
+
+.panel.panel-default
+    .panel-heading Tutoriais
+    .panel-body
+        .row(ng-if='tutoriais.length > 0')
+            .col-sm-4(ng-repeat='tutorial in tutoriais')
+                .well
+                    h3 {{tutorial.titulo}}
+                    p {{tutorial.descricao}}
+                    button.btn.btn-default(ng-click='aprender(tutorial._id)')
+                        span.glyphicon.glyphicon-book
+                        |  Aprender...
+        .row(ng-if='tutoriais.length == 0')
+            .col-sm-12
+                p Não existe nenhum tutorial com o filtro {{filtro}}.

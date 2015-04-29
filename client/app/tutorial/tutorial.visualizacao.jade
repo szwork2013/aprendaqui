@@ -1,0 +1,105 @@
+h1
+    span.fa.fa-book
+    |  Tutorial
+    small  {{tutorial.titulo}}
+hr
+
+ol.breadcrumb
+    li
+        a(href='/#/') 
+            span.fa.fa-home
+            |  Início
+    li
+        a(href='/#/tutorial/categoria/{{tutorial.categoria._id}}')
+            span.fa.fa-tags 
+            |  Categoria {{tutorial.categoria.nome}}
+    li
+        a(href='/#/tutorial/subcategoria/{{tutorial.subcategoria._id}}')
+            span.fa.fa-tag
+            |  Subcategoria {{tutorial.subcategoria.nome}}
+    li.active
+        span.fa.fa-book
+        |  {{tutorial.titulo}}
+
+.panel.panel-default
+    .panel-heading 
+        | Sobre o Tutorial
+    .panel-body
+        .lead Descrição:
+        .well
+            | {{tutorial.descricao}}
+            br(ng-if='tutorial.preRequisitos.length > 0 || tutorial.posRequisitos.length > 0')
+            br(ng-if='tutorial.preRequisitos.length > 0 || tutorial.posRequisitos.length > 0')
+            div(ng-if='tutorial.preRequisitos.length > 0')
+                strong Pré-requisitos:
+                ul
+                    li(ng-repeat='preRequisito in tutorial.preRequisitos')
+                        | {{preRequisito}}
+            div(ng-if='tutorial.posRequisitos.length > 0')
+                strong Pós-requisitos:
+                ul
+                    li(ng-repeat='posRequisito in tutorial.posRequisitos')
+                        | {{posRequisito}}
+        .lead Autor:
+        .row
+            .col-md-1.col-sm-2
+                a.clickable(ng-click='informacoesUsuario(tutorial.autor._id)')
+                    img.media-object.image-autor.thumbnail(ng-src='{{tutorial.autor.fotoPath}}', tooltip='{{tutorial.autor.nome}}')
+            .col-md-9.col-sm-8
+                .well
+                    strong Autor: 
+                    | {{tutorial.autor.nome}}
+                    br
+                    strong Data: 
+                    | {{tutorial.data}}
+                    br
+                    div(ng-if='tutorial.mediaNotas > 0')                    
+                        strong Média de estrelas: 
+                        rating(ng-model='tutorial.mediaNotas', max='max', readonly='true', tooltip='Média de Estrelas', disabled)
+        button.btn.btn-default.pull-left(ng-if='autenticado && usuarioLogado._id != tutorial.autor._id', ng-click='denunciar(tutorial._id, tutorial.titulo)')
+            span.fa.fa-warning
+            |  Denunciar
+
+.panel.panel-default
+    .panel-heading Tutorial
+    .panel-body
+        .well.well-lg
+            div(ta-bind ng-model='tutorial.texto')
+        .panel.panel-default(ng-show='autenticado && usuarioLogado._id != tutorial.autor._id')
+            .panel-heading Classifique
+            .panel-body
+                rating(ng-model='classificacao', max='max', readonly='isReadonly', on-hover='hoveringOver(value)', on-leave='overStar = null', 
+                    tooltip='Classificação', ng-change='classificar()')
+
+h2 Comentários
+hr
+
+.panel.panel-default
+    .panel-heading Comentar
+    .panel-body
+        form.form-horizontal(role='form', name='formulario', ng-submit='formulario.$valid && comentar()', ng-show='autenticado')
+            .form-group
+                .col-sm-6
+                    textarea#comentario.form-control(placeholder='Digite o seu comentário', ng-model='comentario', required)
+                .col-sm-1
+                    button.btn.btn-primary(type='submit') 
+                        span.fa.fa-comment
+                        |  Salvar Comentário
+        .lead(ng-hide='autenticado') É necessário estar autenticado para comentar.
+
+.panel.panel-default(ng-if='comentarios.length > 0')
+    .panel-heading Comentários
+    .panel-body
+        div#comentarios(ng-repeat='comentario in comentarios')
+            .row
+                .col-md-1.col-sm-2
+                    a.clickable(ng-click='informacoesUsuario(comentario.autor._id)')
+                        img.media-object.image-autor.thumbnail(ng-src='{{comentario.autor.fotoPath}}', tooltip='{{comentario.autor.nome}}')
+                .col-md-9.col-sm-8
+                    .well
+                        strong {{comentario.autor.nome}}
+                        br
+                        | {{comentario.texto}}
+                        br 
+                        strong {{comentario.data}} - {{comentario.horario}}
+            hr

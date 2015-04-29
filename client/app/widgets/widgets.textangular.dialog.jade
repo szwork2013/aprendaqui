@@ -1,0 +1,12 @@
+.modal-header
+	h3.modal-title
+		span.fa.fa-cloud 
+		|  APRENDAQUI
+.modal-body
+	.lead {{mensagem}}
+	.row
+		.col-sm-12
+			input.form-control#denuncia.form-control(ng-model='url', required)
+.modal-footer
+	button.btn.btn-success(ng-click='confirmar(url)') OK
+	button.btn.btn-default(ng-click='cancelar()') Cancelar

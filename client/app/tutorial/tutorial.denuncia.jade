@@ -1,0 +1,25 @@
+form.form-horizontal(role='form', name='formulario', ng-submit='formulario.$valid && denunciar(motivo)')
+
+	.modal-header
+		h3.modal-title Denunciar Tutorial {{tutorial.titulo}}
+
+	.modal-body
+		.lead Qual o motivo da denúncia?
+			span.obrigatorio(tooltip='Campo obrigatório')  *
+		.row
+			.col-sm-12
+				textarea#denuncia.form-control(placeholder='Motivo', ng-model='motivo', required)
+		
+		br
+
+		small
+			span.obrigatorio * 
+			|  Campos que são obrigatórios.
+
+	.modal-footer
+		button.btn.btn-default.pull-left(type='button', ng-click='cancelar()')
+			span.fa.fa-remove
+			|  Cancelar
+		button.btn.btn-danger(type='submit')
+			span.fa.fa-warning
+			|  Denunciar

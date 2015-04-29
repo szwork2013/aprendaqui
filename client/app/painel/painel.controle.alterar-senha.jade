@@ -1,0 +1,27 @@
+h3 Alterar Senha
+hr
+form.form-horizontal(role='form', name='formulario', ng-submit='alterarSenha(senha)')
+	.form-group
+		label.col-md-3.col-sm-4.control-label(for='senha') Antiga Senha:
+			span.obrigatorio(tooltip='Campo obrigatório')  *
+		.col-md-5.col-sm-6
+			input#senha.form-control(type='password', pattern=".{5,10}", title="A senha deve conter 5 a 10 caracteres.", placeholder='Antiga Senha', ng-model='senha.antiga', required)
+	.form-group
+		label.col-md-3.col-sm-4.control-label(for='nova-senha') Nova Senha:
+			span.obrigatorio(tooltip='Campo obrigatório')  *
+		.col-md-5.col-sm-6
+			input#nova-senha.form-control(type='password', pattern=".{5,10}", title="A senha deve conter 5 a 10 caracteres.", placeholder='Nova Senha', ng-model='senha.nova', required)
+	.form-group
+		label.col-md-3.col-sm-4.control-label(for='senha-novamente') Nova Senha Novamente:
+			span.obrigatorio(tooltip='Campo obrigatório')  *
+		.col-md-5.col-sm-6
+			input#senha-novamente.form-control(type='password', pattern=".{5,10}", title="A senha deve conter 5 a 10 caracteres.", placeholder='Nova Senha Novamente', ng-model='senha.nova2', required)
+	.form-group
+		.col-md-offset-6.col-sm-offset-7
+			button.btn.btn-primary(type='submit') 
+				span.fa.fa-lock
+				|  Alterar Senha
+
+	small
+		span.obrigatorio * 
+		|  Campos que são obrigatórios.

@@ -49,7 +49,6 @@ module.exports = function() {
             if(err) {
                 res.json({mensagem:err, status:"n"});
             }
-            console.log(comentarios);
             resposta.comentarios = comentarios ? comentarios.length : 0;
             numerosClassificacoes(res, resposta, tutoriaisId);
         });
